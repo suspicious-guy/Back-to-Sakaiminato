@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1acaa1ced4207004d91b3861e745a930
+guid: e5d77e92d0f007843b42059da0a972f3
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 0
+    spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 64
@@ -72,7 +72,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 2
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -87,7 +87,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 2
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639131614168810477
+  platformSettingsDirtyTick: 639135484970537632
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ground 1
+  - name: tiles
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 64
       height: 32
-    spriteID: 3718a22f5a1c3594ea23564688e78945
+    spriteID: 257f1401573fc00429acb6d3dfef6794
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -149,21 +149,42 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
-  tileSetImportData: []
+  tileSetImportData:
+  - name: Layer 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 64
+      height: 32
+    spriteID: 6730ecbd2b0a9804bb1038c4814e1026
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 366288118
+      value0: 4287466680
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: ground 1
-    layerFlags: 0
+    name: Layer 1
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: ground 1
+    - name: Layer 1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +192,7 @@ ScriptedImporter:
         y: 0
         width: 64
         height: 32
-      spriteId: 3718a22f5a1c3594ea23564688e78945
+      spriteId: 6730ecbd2b0a9804bb1038c4814e1026
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -202,7 +223,7 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  - name: Windows Store Apps
+  - name: WebGL
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 16384

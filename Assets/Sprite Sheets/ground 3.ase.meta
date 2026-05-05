@@ -129,8 +129,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Sprite-0004
     originalName: 
-    pivot: {x: 0.5, y: -0.44444445}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Sprite-0004
+    - name: ground 3
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
