@@ -1,12 +1,16 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using static Unity.Collections.Unicode;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float movingSpeed = 4f;
-    [SerializeField] private LayerMask blockingLayers;
-    [SerializeField] private IsometricGrid grid;
+    [SerializeField] private float walkSpeed = 3f;
+    [SerializeField] private float runSpeed = 8f;
 
+    private float currentSpeed;
+    private bool isRunning = false;
+    private Vector2 targetPosition;
+    private bool hasTarget;
     private Rigidbody2D rb;
 
     private List<Vector2> currentPath;
@@ -18,29 +22,48 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentSpeed = walkSpeed;
     }
 
     private void Update()
     {
+        if (Keyboard.current.leftShiftKey.wasPressedThisFrame)
+        {
+            isRunning = !isRunning;
+            currentSpeed = isRunning ? runSpeed : walkSpeed;
+            Debug.Log($"РўРµРєСѓС‰Р°СЏ СЃРєРѕСЂРѕСЃС‚СЊ: {currentSpeed}, Р±РµРі: {isRunning}");
+        }
+
         if (GameInput.Instance.TryGetClickPosition(out Vector2 clickPos))
         {
             lastMouseTarget = clickPos;
             StartMouseMovement(clickPos);
         }
-
-        Vector2 input = GameInput.Instance.GetMovementVector();
-        if (input != Vector2.zero)
+    }
+    private void FixedUpdate()
+    {
+        float speedToUse = currentSpeed;
+        if (hasTarget)
         {
             if (currentPath != null)
             {
                 currentPath = null;
-                Debug.Log("Режим изменён на ручное управление");
+                Debug.Log("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
             }
-            moveDirection = input.normalized;
+
+            rb.MovePosition(rb.position + direction * (speedToUse * Time.fixedDeltaTime));
         }
         else
         {
-            moveDirection = Vector2.zero;
+            Vector2 inputVector = GameInput.Instance.GetMovementVector();
+            inputVector = inputVector.normalized;
+
+            if (inputVector != Vector2.zero)
+            {
+                Debug.Log($"Р”РІРёР¶РµРЅРёРµ WASD, СЃРєРѕСЂРѕСЃС‚СЊ: {speedToUse}");
+            }
+
+            rb.MovePosition(rb.position + inputVector * (speedToUse * Time.fixedDeltaTime));
         }
     }
 
@@ -61,7 +84,7 @@ public class Player : MonoBehaviour
     {
         if (grid == null)
         {
-            Debug.LogError("IsometricGrid не назначен в инспекторе!");
+            Debug.LogError("IsometricGrid пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
@@ -74,7 +97,7 @@ public class Player : MonoBehaviour
             {
                 currentPath = path;
                 currentPathIndex = 0;
-                Debug.Log($"Путь найден. Шагов: {path.Count}");
+                Debug.Log($"пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ: {path.Count}");
                 return;
             }
         }
@@ -95,7 +118,7 @@ public class Player : MonoBehaviour
             {
                 currentPath = path;
                 currentPathIndex = 0;
-                Debug.Log($"Иду до ближайшей доступной точки. Шагов: {path.Count}");
+                Debug.Log($"пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ: {path.Count}");
             }
         }
     }

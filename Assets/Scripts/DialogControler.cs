@@ -1,98 +1,140 @@
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class DialogControler : MonoBehaviour
 {
-    public TextMeshProUGUI DialogText;
-    public string[] Sentences;
-    private int Index = 0;
-    public float DialogSpeed;
+    [Header("UI элементы")]
+    public GameObject dialogPanel;
+    public Image playerPortrait;
+    public Image npcPortrait;
+    public TextMeshProUGUI dialogText;
 
+    [Header("Настройки")]
+    public float textSpeed = 0.05f;
+
+    public event Action OnDialogueEnd;
+
+    private DialogueLine[] currentDialogue;
+    private int currentLineIndex = 0;
     private bool isDialogueActive = false;
     private bool isTyping = false;
 
+    [Serializable]
+    public class DialogueLine
+    {
+        public string speaker;
+        public string text;
+    }
+
     void Start()
     {
-        if (DialogText != null)
-            DialogText.transform.parent.gameObject.SetActive(false);
+        if (dialogPanel != null)
+            dialogPanel.SetActive(false);
+
+        if (playerPortrait != null)
+            playerPortrait.gameObject.SetActive(false);
+
+        if (npcPortrait != null)
+            npcPortrait.gameObject.SetActive(false);
     }
 
     void Update()
     {
         if (!isDialogueActive) return;
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && !isTyping)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            NextSentence();
-        }
-
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            CloseDialogue();
+            if (isTyping)
+            {
+                StopAllCoroutines();
+                dialogText.text = currentDialogue[currentLineIndex].text;
+                isTyping = false;
+            }
+            else
+            {
+                NextLine();
+            }
         }
     }
 
-    public void StartDialogue(string[] newSentences)
+    public void StartDialogue(DialogueLine[] dialogue)
     {
-        Sentences = newSentences;
-        Index = 0;
+        currentDialogue = dialogue;
+        currentLineIndex = 0;
         isDialogueActive = true;
 
-        if (DialogText != null)
-            DialogText.transform.parent.gameObject.SetActive(true);
+        if (dialogPanel != null)
+            dialogPanel.SetActive(true);
 
-        DisablePlayerControls(true);
+        ShowCurrentLine();
+    }
 
-        NextSentence();
+    void ShowCurrentLine()
+    {
+        if (currentLineIndex >= currentDialogue.Length)
+        {
+            CloseDialogue();
+            return;
+        }
+
+        DialogueLine line = currentDialogue[currentLineIndex];
+
+        if (line.speaker == "player")
+        {
+            if (playerPortrait != null)
+                playerPortrait.gameObject.SetActive(true);
+            if (npcPortrait != null)
+                npcPortrait.gameObject.SetActive(false);
+        }
+        else
+        {
+            if (playerPortrait != null)
+                playerPortrait.gameObject.SetActive(false);
+            if (npcPortrait != null)
+                npcPortrait.gameObject.SetActive(true);
+        }
+
+        dialogText.text = "";
+        StartCoroutine(TypeText(line.text));
+    }
+
+    IEnumerator TypeText(string text)
+    {
+        isTyping = true;
+        dialogText.text = "";
+
+        foreach (char c in text.ToCharArray())
+        {
+            dialogText.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+
+        isTyping = false;
+    }
+
+    void NextLine()
+    {
+        currentLineIndex++;
+        ShowCurrentLine();
     }
 
     void CloseDialogue()
     {
         isDialogueActive = false;
 
-        if (DialogText != null)
-            DialogText.transform.parent.gameObject.SetActive(false);
+        if (dialogPanel != null)
+            dialogPanel.SetActive(false);
 
-        DisablePlayerControls(false);
-    }
+        if (playerPortrait != null)
+            playerPortrait.gameObject.SetActive(false);
 
-    void NextSentence()
-    {
-        if (Index <= Sentences.Length - 1)
-        {
-            DialogText.text = "";
-            StartCoroutine(WriteSentence());
-        }
-        else
-        {
-            CloseDialogue();
-        }
-    }
-
-    IEnumerator WriteSentence()
-    {
-        isTyping = true;
-
-        foreach (char Character in Sentences[Index].ToCharArray())
-        {
-            DialogText.text += Character;
-            yield return new WaitForSeconds(DialogSpeed);
-        }
-
-        Index++;
-        isTyping = false;
-    }
-
-    void DisablePlayerControls(bool disable)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
-
-        var rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null)
-            rb.linearVelocity = Vector2.zero;
+        if (npcPortrait != null)
+            npcPortrait.gameObject.SetActive(false);
+        Debug.Log("✅ Диалог закончился");
+        OnDialogueEnd?.Invoke();
     }
 }

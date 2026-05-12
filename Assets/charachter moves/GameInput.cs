@@ -15,11 +15,29 @@ public class GameInput : MonoBehaviour
         playerInputActions.Enable();
         playerInputActions.Player.Click.performed += OnClick;
     }
+
+    private void OnEnable()
+    {
+        playerInputActions?.Enable();
+        playerInputActions?.Player.Enable();
+        playerInputActions.Player.Click.performed += OnClick;
+    }
+
+    private void OnDisable()
+    {
+        if (playerInputActions != null)
+        {
+            playerInputActions.Player.Click.performed -= OnClick;
+            playerInputActions.Player.Disable();
+            playerInputActions.Disable();
+        }
+    }
     private void OnDestroy()
     {
         if (playerInputActions != null)
         {
             playerInputActions.Player.Click.performed -= OnClick;
+            playerInputActions.Dispose();
         }
     }
 
