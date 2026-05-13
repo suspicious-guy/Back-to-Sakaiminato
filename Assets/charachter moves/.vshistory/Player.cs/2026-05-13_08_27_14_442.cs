@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     [Tooltip("Расстояние до путевой точки, при котором считаем её достигнутой")]
     [SerializeField] private float waypointReachDistance = 0.08f;
 
-    private Rigidbody2D rb;
-
     private float currentSpeed;
     private bool isRunning;
 
@@ -139,7 +137,7 @@ public class Player : MonoBehaviour
                 return;
             }
 
-            rb.linearVelocity = Vector2.zero;
+=            rb.linearVelocity = Vector2.zero;
             return;
         }
 

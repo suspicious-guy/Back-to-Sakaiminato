@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,16 +12,23 @@ public class Player : MonoBehaviour
     [Tooltip("Расстояние до путевой точки, при котором считаем её достигнутой")]
     [SerializeField] private float waypointReachDistance = 0.08f;
 
+    private float currentSpeed;
+    private bool isRunning = false;
+    private Vector2 targetPosition;
+    private bool hasTarget;
     private Rigidbody2D rb;
 
     private float currentSpeed;
     private bool isRunning;
 
+
     private List<Vector2> path;
     private int pathIndex;
     private bool hasPath;
 
+
     private Vector2 wasdInput;
+
 
     private void Awake()
     {
@@ -111,6 +118,7 @@ public class Player : MonoBehaviour
         hasPath = false;
         path = null;
     }
+
 
     private void MoveByWASD()
     {

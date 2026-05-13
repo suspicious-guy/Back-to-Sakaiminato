@@ -1,7 +1,13 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Управляет движением игрока.
+/// • WASD/стрелки  — движение «от руки»; нельзя войти в непроходимую клетку.
+/// • ЛКМ           — движение по пути A*; если цель непроходима — идём к ближайшей проходимой.
+/// • Shift (зажим) — бег.
+/// </summary>
 public class Player : MonoBehaviour
 {
     [Header("Скорость")]
@@ -17,11 +23,14 @@ public class Player : MonoBehaviour
     private float currentSpeed;
     private bool isRunning;
 
+
     private List<Vector2> path;
     private int pathIndex;
     private bool hasPath;
 
+
     private Vector2 wasdInput;
+
 
     private void Awake()
     {
@@ -111,6 +120,7 @@ public class Player : MonoBehaviour
         hasPath = false;
         path = null;
     }
+
 
     private void MoveByWASD()
     {
