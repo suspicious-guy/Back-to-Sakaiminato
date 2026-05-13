@@ -38,11 +38,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: dialog
+    uniqueID: 1897050667
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: trees
     uniqueID: 1648860187
+    locked: 0
+  - name: grid
+    uniqueID: 2725735177
     locked: 0
   m_RenderingLayers:
   - Default
