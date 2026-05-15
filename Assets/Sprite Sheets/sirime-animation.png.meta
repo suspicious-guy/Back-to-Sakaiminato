@@ -1,0 +1,366 @@
+fileFormatVersion: 2
+guid: 752643704a2f83d47b7eb8068bffefff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9045601694198099551
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_0"
+  - first:
+      213: 635091116859204204
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_1"
+  - first:
+      213: 386047675031219859
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_2"
+  - first:
+      213: -4482419237513309544
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_3"
+  - first:
+      213: 1392030752950652503
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_4"
+  - first:
+      213: -4467758624364462190
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_5"
+  - first:
+      213: -4319925665948158692
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_6"
+  - first:
+      213: 7995674640826638215
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_7"
+  - first:
+      213: 527936684230142192
+    second: "\u0441\u0438\u0440\u0438\u043C\u044D \u043F\u043E \u043A\u0430\u0434\u0440\u0430\u043C_8"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 38
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sirime-animation_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1
+        width: 23
+        height: 86
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e0393ec59b677b45879bef4943be5a9
+      internalID: 2146771684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1
+        width: 25
+        height: 85
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7638672f8f621da4188d94926dc51e6a
+      internalID: 1487138296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1
+        width: 37
+        height: 79
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad433374305f16943ba9103a54a18fc9
+      internalID: 283019859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_3
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1
+        width: 42
+        height: 70
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf02a1264936bd49a6a1881785bc1e8
+      internalID: 1106716393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_4
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1
+        width: 44
+        height: 65
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 278e7de251098b84493d661fc4937d91
+      internalID: -1840610985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1
+        width: 38
+        height: 47
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e2d537c7d304624997b2d3ef53ce318
+      internalID: 1036488958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_6
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 1
+        width: 38
+        height: 46
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f8b801a49a8eb4ca9df8b5bda6da5f
+      internalID: -890851445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_7
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 1
+        width: 38
+        height: 46
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b577fa686e4472244acc825931883ca8
+      internalID: 2082064926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirime-animation_8
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1
+        width: 38
+        height: 46
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525f84ae9a69aaa418b0d9aaebcf395b
+      internalID: 675301291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f032a12db02718a49989e26ba1293610
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      sirime-animation_0: 2146771684
+      sirime-animation_1: 1487138296
+      sirime-animation_2: 283019859
+      sirime-animation_3: 1106716393
+      sirime-animation_4: -1840610985
+      sirime-animation_5: 1036488958
+      sirime-animation_6: -890851445
+      sirime-animation_7: 2082064926
+      sirime-animation_8: 675301291
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
