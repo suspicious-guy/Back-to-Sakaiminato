@@ -11,7 +11,11 @@ public class GameInput : MonoBehaviour
     private bool hasClickTarget;
 
     private static bool blockNextClick = false;
-    public static void BlockNextClick() => blockNextClick = true;
+    public static void BlockNextClick()
+    {
+        blockNextClick = true;
+        Debug.Log("[GameInput] —ледующий клик заблокирован дл€ движени€");
+    }
 
     private void Awake()
     {
@@ -29,6 +33,13 @@ public class GameInput : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext context)
     {
+        if (blockNextClick)
+        {
+            blockNextClick = false;
+            Debug.Log("[GameInput]  лик заблокирован Ч игрок не двигаетс€");
+            return;
+        }
+
         Vector2 mousePos = Mouse.current.position.ReadValue();
         clickPosition = Camera.main.ScreenToWorldPoint(mousePos);
         hasClickTarget = true;
@@ -42,19 +53,9 @@ public class GameInput : MonoBehaviour
         if (hasClickTarget)
         {
             hasClickTarget = false;
-
-            if (blockNextClick)
-            {
-                blockNextClick = false;
-                Debug.Log("[GameInput]  лик заблокирован Ч игрок не двигаетс€");
-                position = Vector2.zero;
-                return false;
-            }
-
             position = clickPosition;
             return true;
         }
-
         position = Vector2.zero;
         return false;
     }

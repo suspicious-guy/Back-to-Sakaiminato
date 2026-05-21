@@ -10,9 +10,6 @@ public class GameInput : MonoBehaviour
     private Vector2 clickPosition;
     private bool hasClickTarget;
 
-    private static bool blockNextClick = false;
-    public static void BlockNextClick() => blockNextClick = true;
-
     private void Awake()
     {
         Instance = this;
@@ -29,6 +26,7 @@ public class GameInput : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext context)
     {
+        if (CreatureClickBlocker.IsCreatureClicked) return;
         Vector2 mousePos = Mouse.current.position.ReadValue();
         clickPosition = Camera.main.ScreenToWorldPoint(mousePos);
         hasClickTarget = true;
@@ -42,19 +40,9 @@ public class GameInput : MonoBehaviour
         if (hasClickTarget)
         {
             hasClickTarget = false;
-
-            if (blockNextClick)
-            {
-                blockNextClick = false;
-                Debug.Log("[GameInput]  лик заблокирован Ч игрок не двигаетс€");
-                position = Vector2.zero;
-                return false;
-            }
-
             position = clickPosition;
             return true;
         }
-
         position = Vector2.zero;
         return false;
     }

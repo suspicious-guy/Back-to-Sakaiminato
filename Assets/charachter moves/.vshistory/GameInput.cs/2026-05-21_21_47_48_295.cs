@@ -10,6 +10,8 @@ public class GameInput : MonoBehaviour
     private Vector2 clickPosition;
     private bool hasClickTarget;
 
+    // Выставляется из TreeCreature.Update (до Player.Update в том же кадре).
+    // Сбрасывается в TryGetClickPosition — блокирует ровно один клик.
     private static bool blockNextClick = false;
     public static void BlockNextClick() => blockNextClick = true;
 
@@ -27,6 +29,9 @@ public class GameInput : MonoBehaviour
             playerInputActions.Player.Click.performed -= OnClick;
     }
 
+    // OnClick — InputSystem callback, вызывается ДО Update.
+    // Здесь блок НЕ проверяем — флаг ещё не выставлен.
+    // Просто сохраняем позицию клика.
     private void OnClick(InputAction.CallbackContext context)
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
@@ -37,6 +42,9 @@ public class GameInput : MonoBehaviour
     public Vector2 GetMovementVector()
         => playerInputActions.Player.Move.ReadValue<Vector2>();
 
+    // TryGetClickPosition вызывается из Player.Update.
+    // К этому моменту TreeCreature.Update уже выставил BlockNextClick,
+    // поэтому проверяем блок здесь — это надёжно.
     public bool TryGetClickPosition(out Vector2 position)
     {
         if (hasClickTarget)

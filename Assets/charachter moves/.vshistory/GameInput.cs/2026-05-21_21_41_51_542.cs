@@ -54,7 +54,6 @@ public class GameInput : MonoBehaviour
             position = clickPosition;
             return true;
         }
-
         position = Vector2.zero;
         return false;
     }

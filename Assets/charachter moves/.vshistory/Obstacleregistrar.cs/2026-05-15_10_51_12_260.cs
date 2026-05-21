@@ -1,5 +1,16 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Вспомогательный компонент для GameObject-препятствий.
+///
+/// Повесь на каждый объект, который должен блокировать путь A*
+/// (ящики, NPC-барьеры, интерактивные объекты и т.д.).
+///
+/// Что делает автоматически:
+///   1. Проверяет, что объект находится на слое Obstacle.
+///   2. Если на объекте нет Collider2D — добавляет BoxCollider2D.
+///   3. При уничтожении объекта — перестраивает сетку PathfindingGrid.
+/// </summary>
 [DisallowMultipleComponent]
 public class ObstacleRegistrar : MonoBehaviour
 {
@@ -18,6 +29,7 @@ public class ObstacleRegistrar : MonoBehaviour
              "Нужно, если объекты могут исчезать во время игры.")]
     [SerializeField] private bool rebuildOnDestroy = true;
 
+    // ─────────────────────────────────────────────────────────────────────────
 
     private void Awake()
     {
@@ -27,12 +39,16 @@ public class ObstacleRegistrar : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Перестраиваем сетку, чтобы клетки под удалённым объектом снова открылись
         if (rebuildOnDestroy && PathfindingGrid.Instance != null)
             PathfindingGrid.Instance.BuildGrid();
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+
     private void ValidateLayer()
     {
+        // Слой "Obstacle" должен быть создан в Project Settings → Tags and Layers
         int obstacleLayerIndex = LayerMask.NameToLayer("Obstacle");
 
         if (obstacleLayerIndex == -1)
@@ -56,12 +72,13 @@ public class ObstacleRegistrar : MonoBehaviour
         if (!autoAddCollider) return;
 
         Collider2D col = GetComponent<Collider2D>();
-        if (col != null) return;
+        if (col != null) return; // коллайдер уже есть
 
+        // Добавляем BoxCollider2D с заданными размерами
         var box = gameObject.AddComponent<BoxCollider2D>();
         box.size = autoColliderSize;
         box.offset = autoColliderOffset;
-        box.isTrigger = false;
+        box.isTrigger = false; // триггер тоже работает с OverlapBox, но лучше явно
 
         Debug.Log($"[ObstacleRegistrar] Добавлен BoxCollider2D на '{gameObject.name}' " +
                   $"(size={autoColliderSize}, offset={autoColliderOffset}).");
