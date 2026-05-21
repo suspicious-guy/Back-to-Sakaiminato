@@ -12,6 +12,7 @@ public class DialogControler : MonoBehaviour
     public Image playerPortrait;
     public Image npcPortrait;
     public TextMeshProUGUI dialogText;
+    public TextMeshProUGUI speakerNameText;  
 
     [Header("Настройки")]
     public float textSpeed = 0.05f;
@@ -27,6 +28,7 @@ public class DialogControler : MonoBehaviour
     public class DialogueLine
     {
         public string speaker;
+        public string speakerName;  
         public string text;
     }
 
@@ -40,6 +42,9 @@ public class DialogControler : MonoBehaviour
 
         if (npcPortrait != null)
             npcPortrait.gameObject.SetActive(false);
+
+        if (speakerNameText != null)
+            speakerNameText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -61,7 +66,7 @@ public class DialogControler : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueLine[] dialogue)
+    public void StartDialogue(DialogueLine[] dialogue, Sprite npcSprite = null, bool showPlayerPortrait = false)
     {
         currentDialogue = dialogue;
         currentLineIndex = 0;
@@ -69,6 +74,23 @@ public class DialogControler : MonoBehaviour
 
         if (dialogPanel != null)
             dialogPanel.SetActive(true);
+
+        if (npcSprite != null && npcPortrait != null)
+            npcPortrait.sprite = npcSprite;
+
+        if (showPlayerPortrait)
+        {
+            if (playerPortrait != null) playerPortrait.gameObject.SetActive(true);
+            if (npcPortrait != null) npcPortrait.gameObject.SetActive(false);
+        }
+        else
+        {
+            if (playerPortrait != null) playerPortrait.gameObject.SetActive(false);
+            if (npcPortrait != null) npcPortrait.gameObject.SetActive(true);
+        }
+
+        if (speakerNameText != null)
+            speakerNameText.gameObject.SetActive(true);
 
         ShowCurrentLine();
     }
@@ -83,19 +105,33 @@ public class DialogControler : MonoBehaviour
 
         DialogueLine line = currentDialogue[currentLineIndex];
 
+        // Показываем имя говорящего
+        if (speakerNameText != null && !string.IsNullOrEmpty(line.speakerName))
+        {
+            speakerNameText.text = line.speakerName;
+        }
+
         if (line.speaker == "player")
         {
+            Debug.Log($"Включаю PlayerPortrait, выключаю NPCPortrait");
             if (playerPortrait != null)
+            {
                 playerPortrait.gameObject.SetActive(true);
+                Debug.Log($"PlayerPortrait активен: {playerPortrait.gameObject.activeSelf}");
+            }
             if (npcPortrait != null)
                 npcPortrait.gameObject.SetActive(false);
         }
         else
         {
+            Debug.Log($"Включаю NPCPortrait, выключаю PlayerPortrait");
+            if (npcPortrait != null)
+            {
+                npcPortrait.gameObject.SetActive(true);
+                Debug.Log($"NPCPortrait активен: {npcPortrait.gameObject.activeSelf}");
+            }
             if (playerPortrait != null)
                 playerPortrait.gameObject.SetActive(false);
-            if (npcPortrait != null)
-                npcPortrait.gameObject.SetActive(true);
         }
 
         dialogText.text = "";
@@ -134,6 +170,10 @@ public class DialogControler : MonoBehaviour
 
         if (npcPortrait != null)
             npcPortrait.gameObject.SetActive(false);
+
+        if (speakerNameText != null)
+            speakerNameText.gameObject.SetActive(false);
+
         Debug.Log("✅ Диалог закончился");
         OnDialogueEnd?.Invoke();
     }

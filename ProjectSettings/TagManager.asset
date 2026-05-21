@@ -50,6 +50,9 @@ TagManager:
   - name: grid
     uniqueID: 2725735177
     locked: 0
+  - name: "\u0441\u0446\u0435\u043D\u0430 1"
+    uniqueID: 1827459687
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
