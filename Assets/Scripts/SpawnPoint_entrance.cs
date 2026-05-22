@@ -1,36 +1,68 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
     [Header("Настройки точки появления")]
     public string pointId = "entrance";
-    public string targetLayer = "Default";  // Слой для персонажа
+    public string targetLayer = "Player";
+    public int orderInLayer = 0;
 
     void Start()
     {
+        StartCoroutine(TeleportPlayer());
+    }
+
+    IEnumerator TeleportPlayer()
+    {
+        yield return null;
+
         if (PlayerPrefs.GetString("SpawnPoint") == pointId)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
+                // Перемещаем игрока
                 player.transform.position = transform.position;
 
-                // Устанавливаем слой
-                player.layer = LayerMask.NameToLayer(targetLayer);
-                Debug.Log($"✅ Игрок появился в {pointId} на слое {targetLayer}");
+                // Настройка слоя
+                int layerIndex = LayerMask.NameToLayer(targetLayer);
+                if (layerIndex == -1) layerIndex = 0;
+                player.layer = layerIndex;
+
+                // Настройка сортировки спрайта
+                SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+                if (sr != null) sr.sortingOrder = orderInLayer;
+
+                // ===== ОБНОВЛЯЕМ КАМЕРУ =====
+                Camera cam = Camera.main;
+                if (cam != null)
+                {
+                    TopDownCamera3_4_ cameraScript = cam.GetComponent<TopDownCamera3_4_>();
+                    if (cameraScript != null)
+                    {
+                        cameraScript.SetPlayer(player.transform);
+                        Debug.Log("✅ Камера обновлена");
+                    }
+                }
+                // ============================
+
+                // Обновляем IsometricDepthSorter
+                IsometricDepthSorter[] sorters = FindObjectsOfType<IsometricDepthSorter>();
+                foreach (var sorter in sorters)
+                {
+                    if (sorter != null)
+                        sorter.SetPlayer(player);
+                }
+
+                Debug.Log($"✅ Игрок появился в {pointId}");
             }
             else
             {
-                Debug.LogError("❌ Игрок не найден! Проверь тег 'Player'");
+                Debug.LogError("❌ Игрок не найден!");
             }
 
             PlayerPrefs.DeleteKey("SpawnPoint");
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
     }
 }

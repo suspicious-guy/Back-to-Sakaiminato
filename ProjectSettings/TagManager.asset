@@ -47,6 +47,9 @@ TagManager:
   - name: trees behind
     uniqueID: 2263382827
     locked: 0
+  - name: "\u0441\u0446\u0435\u043D\u0430 1"
+    uniqueID: 1827459687
+    locked: 0
   - name: Player
     uniqueID: 982761705
     locked: 0
@@ -55,9 +58,6 @@ TagManager:
     locked: 0
   - name: grid
     uniqueID: 2725735177
-    locked: 0
-  - name: "\u0441\u0446\u0435\u043D\u0430 1"
-    uniqueID: 1827459687
     locked: 0
   - name: village
     uniqueID: 3145496723

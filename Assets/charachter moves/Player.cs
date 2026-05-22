@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float runSpeed = 8f;
 
     [Header("Навигация")]
-    [Tooltip("Расстояние до путевой точки, при котором считаем её достигнутой")]
     [SerializeField] private float waypointReachDistance = 0.08f;
 
     private Rigidbody2D rb;
@@ -34,6 +33,7 @@ public class Player : MonoBehaviour
         HandleRunToggle();
         HandleWASD();
         HandleClick();
+        // НЕ НУЖНО вызывать SecondSight здесь — он сам работает
     }
 
     private void FixedUpdate()
@@ -44,13 +44,12 @@ public class Player : MonoBehaviour
             MoveByWASD();
     }
 
-
     private void HandleRunToggle()
     {
-        bool shiftHeld = Keyboard.current.leftShiftKey.isPressed;
-        if (shiftHeld != isRunning)
+        bool shiftPressed = Keyboard.current.leftShiftKey.isPressed || Keyboard.current.rightShiftKey.isPressed;
+        if (shiftPressed != isRunning)
         {
-            isRunning = shiftHeld;
+            isRunning = shiftPressed;
             currentSpeed = isRunning ? runSpeed : walkSpeed;
         }
     }
@@ -80,7 +79,6 @@ public class Player : MonoBehaviour
             CancelPath();
         }
     }
-
 
     private void MoveAlongPath()
     {
