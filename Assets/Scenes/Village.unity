@@ -202,7 +202,7 @@ TilemapRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 3.0948274, y: 7.525872, z: 0}
+  m_ChunkCullingBounds: {x: 3.1875, y: 7.525872, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 3
@@ -5105,6 +5105,105 @@ Transform:
   - {fileID: 76648625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &992798977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 992798980}
+  - component: {fileID: 992798979}
+  - component: {fileID: 992798978}
+  m_Layer: 0
+  m_Name: teleport (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!60 &992798978
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992798977}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: -3.3847494, y: 0.80823493}
+      - {x: -5.392778, y: -0.3721999}
+      - {x: 5.0183654, y: -0.84021735}
+      - {x: 3.6031637, y: 0.46502298}
+  m_UseDelaunayMesh: 1
+--- !u!114 &992798979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992798977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cd59b32ef7c1443b3223d53b010742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
+  targetSceneName: Forest of spiders
+  spawnPointId: entrance
+--- !u!4 &992798980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992798977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 101.49, y: -41.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1136774092
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,6 +5295,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1173518234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173518236}
+  - component: {fileID: 1173518235}
+  m_Layer: 0
+  m_Name: spawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1173518235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173518234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349b8a626093e594791926bc3d7c2851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
+  pointId: entrance 2
+  targetLayer: Player
+  orderInLayer: 1
+--- !u!4 &1173518236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173518234}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 101.68, y: -37.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1174039990
 GameObject:
   m_ObjectHideFlags: 0
@@ -314348,7 +314494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8667466294985060184, guid: 27a1eacadaeed14439b7247b7a674eaa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7185e4e5c90c9174baa68bbe27ba8524, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -314603,6 +314749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1953306044}
   - component: {fileID: 1953306043}
+  - component: {fileID: 1953306045}
   m_Layer: 0
   m_Name: teleport
   m_TagString: Untagged
@@ -314639,6 +314786,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1953306045
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953306042}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.29221392, y: -0.18972778}
+      - {x: -3.2261486, y: -0.3380277}
+      - {x: -2.7167711, y: -1.2473377}
+      - {x: 2.5289195, y: -2.1657236}
+      - {x: 2.2660184, y: -0.75547606}
+  m_UseDelaunayMesh: 1
 --- !u!1 &2006940342
 GameObject:
   m_ObjectHideFlags: 0
@@ -314825,16 +315024,32 @@ MonoBehaviour:
   dialogue:
   - speaker: npc
     speakerName: "\u041C\u0430\u0446\u0443\u043C\u043E\u0442\u043E"
-    text: hi
+    text: "\u041D\u0435 \u0447\u0430\u0441\u0442\u043E \u0437\u0434\u0435\u0441\u044C
+      \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u0448\u044C \u043D\u043E\u0432\u043E\u0435
+      \u043B\u0438\u0446\u043E. \u0418 \u043A\u0430\u043A \u0442\u0435\u0431\u044F
+      \u0443\u0433\u043E\u0440\u0430\u0437\u0434\u0438\u043B\u043E \u0441\u044E\u0434\u0430
+      \u043F\u043E\u043F\u0430\u0441\u0442\u044C?"
+  - speaker: player
+    speakerName: "\u0414\u0430\u0439\u0441\u043A\u0435"
+    text: "\u0410.."
   - speaker: npc
     speakerName: "\u041C\u0430\u0446\u0443\u043C\u043E\u0442\u043E"
-    text: wanna ///?
-  - speaker: player
-    speakerName: 
-    text: 1
-  - speaker: player
-    speakerName: 
-    text: 3
+    text: "\u041D\u0435\u0442, \u043D\u0435 \u043E\u0442\u0432\u0435\u0447\u0430\u0439.
+      \u041C\u043D\u0435 \u043D\u0435 \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E"
+  - speaker: npc
+    speakerName: "\u041C\u0430\u0446\u0443\u043C\u043E\u0442\u043E"
+    text: "\u0422\u043E\u043B\u044C\u043A\u043E, \u0443\u043C\u043E\u043B\u044F\u044E,
+      \u043D\u0435 \u043F\u043E\u043C\u0440\u0438 \u0433\u0434\u0435-\u043D\u0438\u0431\u0443\u0434\u044C.
+      \u041D\u0435 \u043B\u044E\u0431\u043B\u044E \u0440\u0430\u0441\u043A\u043B\u0430\u0434\u044B\u0432\u0430\u0442\u044C
+      \u0447\u0443\u0436\u0438\u0435 \u0432\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u043E\u0441\u0442\u0438
+      \u043F\u043E \u043C\u0435\u0448\u043E\u0447\u043A\u0430\u043C. \u0421\u043C\u043E\u0442\u0440\u0438
+      \u043F\u043E \u0441\u0442\u043E\u0440\u043E\u043D\u0430\u043C \u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u043E"
+  - speaker: Teller
+    speakerName: ???
+    text: "! \u0427\u0442\u043E\u0431\u044B \u0443\u0432\u0438\u0434\u0435\u0442\u044C
+      \u043D\u0435\u0447\u0442\u043E \u043E\u0441\u043E\u0431\u0435\u043D\u043D\u043E\u0435
+      \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0430\u043B\u044C\u0442\u0435\u0440\u043D\u0430\u0442\u0438\u0432\u043D\u043E\u0435
+      \u0437\u0440\u0435\u043D\u0438\u0435 ( T ) !"
   giveSecondSight: 1
   oneTimeOnly: 1
 --- !u!212 &2120454464
@@ -314907,4 +315122,6 @@ SceneRoots:
   - {fileID: 1206001820}
   - {fileID: 1174039993}
   - {fileID: 1953306044}
+  - {fileID: 992798980}
   - {fileID: 1762264653}
+  - {fileID: 1173518236}

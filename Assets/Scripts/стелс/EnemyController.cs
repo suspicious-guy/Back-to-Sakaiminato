@@ -8,14 +8,17 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed = 2f;
     public float waitAtPointTime = 1f;
 
-    [Header("Обнаружение игрока")]
-    public float visionRadius = 3f;
+    [Header("Обнаружение игрока (овальная зона)")]
+    public float visionWidth = 5f;
+    public float visionHeight = 4f;
     public LayerMask playerLayer;
     public LayerMask obstacleLayer;
 
-    [Header("Визуализация")]
-    public Color visionColor = new Color(1f, 0f, 0f, 0.3f);
+    [Header("Визуализация (отдельные параметры)")]
     public GameObject visionVisualizer;
+    public float visualizerWidth = 8f;    // Отдельная ширина для визуализации
+    public float visualizerHeight = 6f;   // Отдельная высота для визуализации
+    public Color visionColor = new Color(1f, 0f, 0f, 0.3f);
     public bool showVisionRadiusInGame = true;
 
     private int currentWaypoint = 0;
@@ -32,11 +35,7 @@ public class EnemyController : MonoBehaviour
 
         if (visionVisualizer != null && showVisionRadiusInGame)
         {
-            UpdateVisionVisualizer();
-        }
-        else if (visionVisualizer != null && !showVisionRadiusInGame)
-        {
-            visionVisualizer.SetActive(false);
+            UpdateVisualizerSize();
         }
     }
 
@@ -99,11 +98,23 @@ public class EnemyController : MonoBehaviour
 
     bool IsPlayerInVision()
     {
-        float distance = Vector2.Distance(transform.position, player.position);
-        if (distance > visionRadius) return false;
+        if (player == null) return false;
 
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, player.position, obstacleLayer);
-        if (hit.collider != null) return false;
+        Vector2 enemyPos = transform.position;
+        Vector2 playerPos = player.position;
+
+        float deltaX = playerPos.x - enemyPos.x;
+        float deltaY = playerPos.y - enemyPos.y;
+
+        float a = visionWidth / 2f;
+        float b = visionHeight / 2f;
+
+        float ellipseValue = (deltaX * deltaX) / (a * a) + (deltaY * deltaY) / (b * b);
+
+        if (ellipseValue > 1f) return false;
+
+        RaycastHit2D hit = Physics2D.Linecast(enemyPos, playerPos, obstacleLayer);
+        if (hit.collider != null && !hit.collider.CompareTag("Player")) return false;
 
         return true;
     }
@@ -113,11 +124,9 @@ public class EnemyController : MonoBehaviour
         PlayerStealth stealth = player.GetComponent<PlayerStealth>();
         if (stealth != null && stealth.isHidden)
         {
-            Debug.Log($"[{gameObject.name}] 🌿 Игрок присел в траве! Не вижу.");
             return;
         }
 
-        Debug.Log($"[{gameObject.name}] ⚠️ Игрок обнаружен!");
         RespawnPlayer();
     }
 
@@ -129,33 +138,50 @@ public class EnemyController : MonoBehaviour
             if (respawn != null)
             {
                 player.position = respawn.transform.position;
-                Debug.Log($"[{gameObject.name}] Игрок перемещён на точку возрождения");
-            }
-            else
-            {
-                Debug.LogWarning("[EnemyController] Нет RespawnPoint на сцене!");
             }
         }
     }
 
-    void UpdateVisionVisualizer()
+    void UpdateVisualizerSize()
     {
-        if (visionVisualizer != null)
+        if (visionVisualizer == null) return;
+
+        // Используем ОТДЕЛЬНЫЕ параметры для визуализации
+        visionVisualizer.transform.localScale = new Vector3(visualizerWidth, visualizerHeight, 1f);
+
+        SpriteRenderer visRenderer = visionVisualizer.GetComponent<SpriteRenderer>();
+        if (visRenderer != null)
         {
-            visionVisualizer.transform.localScale = Vector3.one * visionRadius * 2f;
-            SpriteRenderer visRenderer = visionVisualizer.GetComponent<SpriteRenderer>();
-            if (visRenderer != null)
-            {
-                visRenderer.color = visionColor;
-                visRenderer.sortingOrder = -1;
-            }
+            visRenderer.color = visionColor;
+            visRenderer.sortingOrder = -1;
+        }
+    }
+
+    // Метод для обновления визуализатора из инспектора
+    void OnValidate()
+    {
+        if (visionVisualizer != null && !Application.isPlaying)
+        {
+            visionVisualizer.transform.localScale = new Vector3(visualizerWidth, visualizerHeight, 1f);
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = visionColor;
-        Gizmos.DrawWireSphere(transform.position, visionRadius);
+        // Рисуем реальную зону обнаружения (для отладки)
+        Gizmos.color = Color.yellow;
+        Vector3 center = transform.position;
+
+        Vector3 prevPoint = center + new Vector3(visionWidth / 2f, 0, 0);
+        for (int i = 1; i <= 360; i++)
+        {
+            float angle = i * Mathf.Deg2Rad;
+            float x = Mathf.Cos(angle) * visionWidth / 2f;
+            float y = Mathf.Sin(angle) * visionHeight / 2f;
+            Vector3 newPoint = center + new Vector3(x, y, 0);
+            Gizmos.DrawLine(prevPoint, newPoint);
+            prevPoint = newPoint;
+        }
 
         if (waypoints != null)
         {
@@ -171,11 +197,6 @@ public class EnemyController : MonoBehaviour
                         Gizmos.DrawLine(waypoints[i].position, waypoints[i + 1].position);
                     }
                 }
-            }
-
-            if (waypoints.Length > 1 && waypoints[0] != null && waypoints[waypoints.Length - 1] != null)
-            {
-                Gizmos.DrawLine(waypoints[waypoints.Length - 1].position, waypoints[0].position);
             }
         }
     }
