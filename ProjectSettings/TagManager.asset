@@ -53,6 +53,9 @@ TagManager:
   - name: "\u0441\u0446\u0435\u043D\u0430 1"
     uniqueID: 1827459687
     locked: 0
+  - name: village
+    uniqueID: 3145496723
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
