@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+// добавлено Полиной чтобы загрузка файтинга работала
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class CreatureStep
@@ -151,6 +153,12 @@ public class TreeCreature : MonoBehaviour
 
             if (isClicked)
             {
+                // Проверка для загрузки файтинга, добавлено Полиной             
+                if (currentStep + 1 == 5)
+                {
+                    SceneManager.LoadScene("FightingShirime", LoadSceneMode.Additive);
+                }
+
                 Debug.Log($"[TreeCreature] Клик на шаге {currentStep + 1}, снимаем барьер");
                 RemoveBarrier(step);
 

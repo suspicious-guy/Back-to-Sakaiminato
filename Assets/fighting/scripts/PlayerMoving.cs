@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerFighting : MonoBehaviour
+public class PlayerMoving: MonoBehaviour
 {
     public float speed = 300f;
 
@@ -21,7 +21,6 @@ public class PlayerFighting : MonoBehaviour
         Vector2 moveInput = GameInput.Instance.GetMovementVector();
         if (moveInput == Vector2.zero) return;
 
-        // ИСПРАВЛЕНО: localPosition вместо position
         Vector3 newPosition = rectTransform.localPosition;
         newPosition.x += moveInput.x * speed * Time.deltaTime;
         newPosition.y += moveInput.y * speed * Time.deltaTime;
@@ -34,7 +33,6 @@ public class PlayerFighting : MonoBehaviour
             BattleFieldBoundary.MinY + halfHeight,
             BattleFieldBoundary.MaxY - halfHeight);
 
-        // ИСПРАВЛЕНО: localPosition вместо position
         rectTransform.localPosition = newPosition;
     }
 }

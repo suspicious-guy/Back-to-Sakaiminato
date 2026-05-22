@@ -9,12 +9,9 @@ public class BattleFieldBoundary : MonoBehaviour
 
     void Awake()
     {
-        // ТОЧНЫЕ ГРАНИЦЫ ИЗ РАЗМЕРОВ ПОЛЯ
         MinX = -242f;
         MaxX = 242f;
         MinY = -252f;
         MaxY = 32f;
-
-        Debug.Log($"Границы поля: X[{MinX}..{MaxX}], Y[{MinY}..{MaxY}]");
     }
 }
