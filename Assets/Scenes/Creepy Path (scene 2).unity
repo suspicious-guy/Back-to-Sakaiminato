@@ -22567,9 +22567,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PathfindingGrid
   walkableTilemap: {fileID: 434710533}
   obstacleTilemaps:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1446290789}
+  - {fileID: 1282153586}
+  - {fileID: 958394527}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
