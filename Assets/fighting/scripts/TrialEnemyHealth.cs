@@ -1,13 +1,13 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour
+public class TrialEnemyHealth : MonoBehaviour
 {
     [Header("Здоровье")]
     public float maxHealth = 100f;
     public float currentHealth;
-    
+
     [Header("UI")]
     public TextMeshProUGUI healthText;
 
@@ -16,30 +16,30 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         UpdateHealthUI();
     }
-    
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth < 0) currentHealth = 0;
-        
+
         UpdateHealthUI();
-        
+
         if (currentHealth <= 0)
         {
             Die();
         }
     }
-    
+
     void UpdateHealthUI()
     {
         if (healthText != null)
         {
-            healthText.text = $"Дайске: {currentHealth}";
+            healthText.text = $"Хизаши: {currentHealth}";
         }
     }
-    
+
     void Die()
     {
-        Debug.Log("Игрок погиб!");
+        SceneManager.UnloadSceneAsync(gameObject.scene);
     }
 }

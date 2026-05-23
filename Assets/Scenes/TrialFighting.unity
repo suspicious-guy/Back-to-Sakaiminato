@@ -265,7 +265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightButton
   damage: 10
-  enemy: {fileID: 411623760}
 --- !u!1 &147167818
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u0438\u0440\u0438\u043C\u044D: 100"
+  m_text: "\u0425\u0438\u0437\u0430\u0448\u0438: 100"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -527,6 +526,7 @@ GameObject:
   - component: {fileID: 260974349}
   - component: {fileID: 260974348}
   - component: {fileID: 260974347}
+  - component: {fileID: 260974350}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -608,6 +608,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &260974350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260974346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &401011378
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,9 +707,9 @@ GameObject:
   - component: {fileID: 411623756}
   - component: {fileID: 411623758}
   - component: {fileID: 411623757}
-  - component: {fileID: 411623760}
+  - component: {fileID: 411623759}
   m_Layer: 5
-  m_Name: Shirime
+  m_Name: Hizashi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,8 +731,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -95, y: 130}
-  m_SizeDelta: {x: 190, y: 190}
+  m_AnchoredPosition: {x: -59, y: 128}
+  m_SizeDelta: {x: 120, y: 300}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &411623757
 MonoBehaviour:
@@ -710,7 +754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 675301291, guid: 752643704a2f83d47b7eb8068bffefff, type: 3}
+  m_Sprite: {fileID: 6845313457077764907, guid: 1bae7cd11b201614c9654df0dc8ca520, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -728,7 +772,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411623755}
   m_CullTransparentMesh: 1
---- !u!114 &411623760
+--- !u!114 &411623759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -737,9 +781,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 411623755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9c3d8c264343c468abbb6b08d855ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 69c59b4aa37fdd4459f031c2a0911291, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::TrialEnemyHealth
   maxHealth: 100
   currentHealth: 0
   healthText: {fileID: 205693259}
@@ -1309,7 +1353,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 50, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1373568312
 MonoBehaviour:
@@ -1331,7 +1375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -817434887642183674, guid: 2f25cf2c7a486a04a952f566c2922eb4, type: 3}
+  m_Sprite: {fileID: -4856872790349125329, guid: a1258364b1b0d424a842c8b8c2de2c12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1421,7 +1465,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 50, y: 100}
+  m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
 --- !u!50 &1373568318
 Rigidbody2D:
