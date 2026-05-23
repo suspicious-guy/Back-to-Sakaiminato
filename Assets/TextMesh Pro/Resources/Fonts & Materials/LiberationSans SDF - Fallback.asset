@@ -3808,6 +3808,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 963
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -3854,13 +3855,20 @@ MonoBehaviour:
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
         m_GlyphIndex: 963
+=======
+        m_GlyphIndex: 1010
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: -0.9658203
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 972
+=======
+        m_GlyphIndex: 1016
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
@@ -3868,6 +3876,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 963
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4304,12 +4313,16 @@ MonoBehaviour:
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
         m_GlyphIndex: 961
+=======
+        m_GlyphIndex: 1010
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: 0.9658203
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 993
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4370,6 +4383,8 @@ MonoBehaviour:
           m_XAdvance: 1.8896484
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
+=======
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
         m_GlyphIndex: 1022
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4378,6 +4393,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 961
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4578,6 +4594,13 @@ MonoBehaviour:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: -3.8632812
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 1.8896484
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 993
@@ -4588,6 +4611,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4596,6 +4620,16 @@ MonoBehaviour:
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 995
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 1.8896484
+          m_YAdvance: 0
+      m_SecondAdjustmentRecord:
+        m_GlyphIndex: 994
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
@@ -4603,11 +4637,19 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: -4.8291016
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 998
@@ -4618,6 +4660,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4626,6 +4669,16 @@ MonoBehaviour:
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 1003
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+          m_YAdvance: 0
+      m_SecondAdjustmentRecord:
+        m_GlyphIndex: 1000
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
@@ -4633,11 +4686,19 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: -3.8632812
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 1004
@@ -4648,6 +4709,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4668,6 +4730,13 @@ MonoBehaviour:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: -6.71875
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 1007
@@ -4678,6 +4747,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4698,6 +4768,13 @@ MonoBehaviour:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: -4.8291016
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 1010
@@ -4708,11 +4785,34 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
           m_XAdvance: -4.8291016
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+          m_YAdvance: 0
+      m_SecondAdjustmentRecord:
+        m_GlyphIndex: 1011
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0
+          m_YAdvance: 0
+      m_FeatureLookupFlags: 0
+    - m_FirstAdjustmentRecord:
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 1012
@@ -4723,6 +4823,7 @@ MonoBehaviour:
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
     - m_FirstAdjustmentRecord:
+<<<<<<< HEAD
         m_GlyphIndex: 979
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -4791,6 +4892,16 @@ MonoBehaviour:
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
         m_GlyphIndex: 2015
+=======
+        m_GlyphIndex: 1003
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0.9658203
+          m_YAdvance: 0
+      m_SecondAdjustmentRecord:
+        m_GlyphIndex: 1022
+>>>>>>> parent of 07e4d11 (Изменила Trial Fighting)
         m_GlyphValueRecord:
           m_XPlacement: 0
           m_YPlacement: 0
