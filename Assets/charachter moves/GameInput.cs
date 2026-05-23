@@ -58,4 +58,12 @@ public class GameInput : MonoBehaviour
         position = Vector2.zero;
         return false;
     }
+    private void OnDisable()
+    {
+        if (playerInputActions != null)
+        {
+            playerInputActions.Player.Disable();
+            playerInputActions.Disable();
+        }
+    }
 }
