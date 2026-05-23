@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (healthText != null)
         {
-            healthText.text = $"Дайске: {currentHealth}";
+            healthText.text = $"Здоровье: {currentHealth}";
         }
     }
     

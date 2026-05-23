@@ -22,7 +22,7 @@ public class TrialAttackSpawn : MonoBehaviour
 
     void Update()
     {
-        TrialEnemyHealth enemyHealth = FindObjectOfType<TrialEnemyHealth>();
+        EnemyHealth enemyHealth = FindObjectOfType<EnemyHealth>();
         if (enemyHealth == null || enemyHealth.currentHealth <= 0) return;
 
         timer -= Time.deltaTime;
