@@ -122,9 +122,7 @@ public class TopDownCamera3_4_ : MonoBehaviour
         Vector3 center = new Vector3(
             (fieldMinX + fieldMaxX) * 0.5f,
             (fieldMinY + fieldMaxY) * 0.5f,
-
-
-0f
+            0f
         );
         Vector3 size = new Vector3(
             fieldMaxX - fieldMinX,

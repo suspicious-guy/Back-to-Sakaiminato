@@ -167,7 +167,6 @@ public class CirclePuzzle : MonoBehaviour
 
     void OnPuzzleSolved()
     {
-        SceneManager.UnloadSceneAsync(gameObject.scene.name);
         onSolved.Invoke();
         Debug.Log("Головоломка решена!");
     }

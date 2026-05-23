@@ -217,7 +217,7 @@ public class TreeCreature : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log($"[TreeCreature] Разрушение барьера '{barrierObj.name}'");
+        Debug.Log($"[TreeCreature] Destroy барьера '{barrierObj.name}'");
         Destroy(barrierObj);
 
         yield return null;

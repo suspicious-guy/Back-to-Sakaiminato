@@ -107,7 +107,7 @@ public class CirclePuzzle : MonoBehaviour
     void ApplyMouseForce()
     {
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
-        Vector2 mouseWorld = puzzleCamera.ScreenToWorldPoint(mouseScreen);
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(mouseScreen);
         Vector2 toMouse = mouseWorld - item.position;
         float dist = toMouse.magnitude;
 
@@ -167,7 +167,6 @@ public class CirclePuzzle : MonoBehaviour
 
     void OnPuzzleSolved()
     {
-        SceneManager.UnloadSceneAsync(gameObject.scene.name);
         onSolved.Invoke();
         Debug.Log("Головоломка решена!");
     }

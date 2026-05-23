@@ -2,12 +2,10 @@
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class CirclePuzzle : MonoBehaviour
 {
     [Header("References")]
-    public Camera puzzleCamera;
     public Rigidbody2D item;
     public Transform centerTarget;
     public Image progressBar;
@@ -107,7 +105,7 @@ public class CirclePuzzle : MonoBehaviour
     void ApplyMouseForce()
     {
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
-        Vector2 mouseWorld = puzzleCamera.ScreenToWorldPoint(mouseScreen);
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(mouseScreen);
         Vector2 toMouse = mouseWorld - item.position;
         float dist = toMouse.magnitude;
 
@@ -133,8 +131,6 @@ public class CirclePuzzle : MonoBehaviour
         item.linearVelocity = Vector2.zero;
         item.angularVelocity = 0f;
         item.bodyType = RigidbodyType2D.Kinematic;
-
-        SceneManager.UnloadSceneAsync(gameObject.scene.name);
 
         onFail.Invoke();
     }
@@ -167,7 +163,6 @@ public class CirclePuzzle : MonoBehaviour
 
     void OnPuzzleSolved()
     {
-        SceneManager.UnloadSceneAsync(gameObject.scene.name);
         onSolved.Invoke();
         Debug.Log("Головоломка решена!");
     }

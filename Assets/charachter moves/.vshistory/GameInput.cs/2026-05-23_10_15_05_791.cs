@@ -31,7 +31,6 @@ public class GameInput : MonoBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         clickPosition = Camera.main.ScreenToWorldPoint(mousePos);
         hasClickTarget = true;
-        Debug.Log($"[GameInput] Клик зафиксирован: {clickPosition}");
     }
 
     public Vector2 GetMovementVector()
