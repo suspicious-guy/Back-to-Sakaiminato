@@ -120,14 +120,4 @@ public class IsometricDepthSorter : MonoBehaviour
         Gizmos.DrawLine(basePoint + Vector3.left * 0.5f, basePoint + Vector3.right * 0.5f);
     }
 #endif
-
-    public void SetPlayer(GameObject player)
-    {
-        if (player != null)
-        {
-            playerTransform = player.transform;
-            playerRenderer = player.GetComponent<SpriteRenderer>();
-            Debug.Log($"[IsometricDepthSorter] '{gameObject.name}': Игрок установлен");
-        }
-    }
 }

@@ -1,32 +1,33 @@
-п»їusing UnityEngine;
+using UnityEngine;
 
 public class TopDownCamera3_4_ : MonoBehaviour
 {
-    [Header("Р¦РµР»СЊ (РёРіСЂРѕРє)")]
+    [Header("Цель (игрок)")]
     public Transform player;
 
-    [Header("РќР°СЃС‚СЂРѕР№РєРё СЃР»РµРґРѕРІР°РЅРёСЏ")]
+    [Header("Настройки следования")]
     public float smoothSpeed = 5f;
     public Vector3 offset = new Vector3(0, 5, -8);
 
-    [Header("Р“СЂР°РЅРёС†С‹ РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ (РјРёСЂРѕРІС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹)")]
-    [Tooltip("Р’РєР»СЋС‡РёС‚СЊ РѕРіСЂР°РЅРёС‡РµРЅРёРµ РєР°РјРµСЂС‹ РїРѕ РїРѕР»СЋ")]
+    [Header("Границы игрового поля (мировые координаты)")]
+    [Tooltip("Включить ограничение камеры по полю")]
     public bool limitBounds = true;
 
-    [Tooltip("РњРёРЅРёРјР°Р»СЊРЅР°СЏ X-РєРѕРѕСЂРґРёРЅР°С‚Р° Р»РµРІРѕРіРѕ РєСЂР°СЏ РїРѕР»СЏ")]
+    [Tooltip("Минимальная X-координата левого края поля")]
     public float fieldMinX = -20f;
-    [Tooltip("РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ X-РєРѕРѕСЂРґРёРЅР°С‚Р° РїСЂР°РІРѕРіРѕ РєСЂР°СЏ РїРѕР»СЏ")]
+    [Tooltip("Максимальная X-координата правого края поля")]
     public float fieldMaxX = 20f;
-    [Tooltip("РњРёРЅРёРјР°Р»СЊРЅР°СЏ Y-РєРѕРѕСЂРґРёРЅР°С‚Р° РЅРёР¶РЅРµРіРѕ РєСЂР°СЏ РїРѕР»СЏ")]
+    [Tooltip("Минимальная Y-координата нижнего края поля")]
     public float fieldMinY = -10f;
-    [Tooltip("РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ Y-РєРѕРѕСЂРґРёРЅР°С‚Р° РІРµСЂС…РЅРµРіРѕ РєСЂР°СЏ РїРѕР»СЏ")]
+    [Tooltip("Максимальная Y-координата верхнего края поля")]
     public float fieldMaxY = 10f;
 
-    [Header("РЎС‚Р°СЂС‚РѕРІР°СЏ РїРѕР·РёС†РёСЏ РєР°РјРµСЂС‹ (РґРѕ РІС…РѕРґР° РёРіСЂРѕРєР° РІ РїРѕР»Рµ)")]
-    [Tooltip("РљР°РјРµСЂР° Р±СѓРґРµС‚ СЃС‚РѕСЏС‚СЊ Р·РґРµСЃСЊ, РїРѕРєР° РёРіСЂРѕРє РЅРµ РІРѕР№РґС‘С‚ РІ РїРѕР»Рµ")]
+    [Header("Стартовая позиция камеры (до входа игрока в поле)")]
+    [Tooltip("Камера будет стоять здесь, пока игрок не войдёт в поле")]
     public Vector3 initialCameraPosition;
 
     private Camera cam;
+
     private float halfHeight;
     private float halfWidth;
 
@@ -42,7 +43,6 @@ public class TopDownCamera3_4_ : MonoBehaviour
 
     void LateUpdate()
     {
-        // РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ РїРѕРёСЃРє РёРіСЂРѕРєР°, РµСЃР»Рё РЅРµ РЅР°Р·РЅР°С‡РµРЅ
         if (player == null)
         {
             GameObject found = GameObject.FindGameObjectWithTag("Player");
@@ -52,8 +52,18 @@ public class TopDownCamera3_4_ : MonoBehaviour
                 return;
         }
 
-        // РћР±РЅРѕРІР»СЏРµРј СЂР°Р·РјРµСЂС‹ РєР°РјРµСЂС‹
-        UpdateCameraBounds();
+        if (cam != null && cam.orthographic)
+        {
+            halfHeight = cam.orthographicSize;
+            halfWidth = halfHeight * cam.aspect;
+        }
+        else
+        {
+            halfHeight = Mathf.Abs(offset.y) * Mathf.Tan(cam != null
+                ? cam.fieldOfView * 0.5f * Mathf.Deg2Rad
+                : 30f * Mathf.Deg2Rad);
+            halfWidth = halfHeight * (cam != null ? cam.aspect : 16f / 9f);
+        }
 
         Vector3 targetPosition = player.position + offset;
 
@@ -90,30 +100,6 @@ public class TopDownCamera3_4_ : MonoBehaviour
         );
 
         transform.position = smoothedPosition;
-    }
-
-    private void UpdateCameraBounds()
-    {
-        if (cam != null && cam.orthographic)
-        {
-            halfHeight = cam.orthographicSize;
-            halfWidth = halfHeight * cam.aspect;
-        }
-        else if (cam != null)
-        {
-            halfHeight = Mathf.Abs(offset.y) * Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
-            halfWidth = halfHeight * cam.aspect;
-        }
-    }
-
-    // РџСѓР±Р»РёС‡РЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ СЂСѓС‡РЅРѕР№ СѓСЃС‚Р°РЅРѕРІРєРё РёРіСЂРѕРєР° (РЅР°РїСЂРёРјРµСЂ, РёР· SpawnPoint)
-    public void SetPlayer(Transform playerTransform)
-    {
-        if (playerTransform != null)
-        {
-            player = playerTransform;
-            Debug.Log("вњ… РљР°РјРµСЂР°: РёРіСЂРѕРє СѓСЃС‚Р°РЅРѕРІР»РµРЅ");
-        }
     }
 
     void OnDrawGizmosSelected()
