@@ -16,9 +16,8 @@ public class TrialAttackSpawn : MonoBehaviour
 
     void Start()
     {
-        //ян для лучшего поиска canvas
         Canvas[] allCanvases = FindObjectsOfType<Canvas>();
-        canvas = null;
+        Canvas canvas = null;
         foreach (var c in allCanvases)
         {
             if (c.gameObject.scene == gameObject.scene)

@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Village (scene 3).unity
     guid: 7d4304abfb27a6841a8cc647f884dfc1
   - enabled: 1
+    path: Assets/Scenes/TrialFighting.unity
+    guid: b0021f19280d7694cac5d6c5d8ab7b02
+  - enabled: 1
     path: Assets/Scenes/Puzzle.unity
     guid: ed74cde0dd89a5643b4102158b009180
   - enabled: 1

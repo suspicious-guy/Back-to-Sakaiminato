@@ -22,13 +22,13 @@ public class PlayerPersistent : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded; // добавили
+        SceneManager.sceneUnloaded += OnSceneUnloaded; // ← добавили
     }
 
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded; // добавили
+        SceneManager.sceneUnloaded -= OnSceneUnloaded; // ← добавили
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -38,7 +38,7 @@ public class PlayerPersistent : MonoBehaviour
             SetPlayerActive(false);
     }
 
-    void OnSceneUnloaded(Scene scene) // новый метод
+    void OnSceneUnloaded(Scene scene) // ← новый метод
     {
         bool wasFightScene = System.Array.IndexOf(hiddenInScenes, scene.name) >= 0;
         if (wasFightScene)
@@ -49,10 +49,8 @@ public class PlayerPersistent : MonoBehaviour
     {
         foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
             sr.enabled = active;
-
-        // только коллайдер самого игрока, не детей
-        var col = GetComponent<Collider2D>();
-        if (col != null) col.enabled = active;
+        foreach (var col in GetComponentsInChildren<Collider2D>())
+            col.enabled = active;
 
         var rb = GetComponent<Rigidbody2D>();
         if (rb != null)

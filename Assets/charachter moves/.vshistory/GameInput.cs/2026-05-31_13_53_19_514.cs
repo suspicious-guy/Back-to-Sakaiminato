@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class GameInput : MonoBehaviour
 {
     public static GameInput Instance { get; private set; }
+
     private PlayerInputActions playerInputActions;
     private Vector2 clickPosition;
     private bool hasClickTarget;
@@ -13,18 +14,7 @@ public class GameInput : MonoBehaviour
 
     private void Awake()
     {
-        // DontDestroyOnLoad чтобы не пересоздавался при смене сцен
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        Instance = this;
         playerInputActions = new PlayerInputActions();
         playerInputActions.Enable();
         playerInputActions.Player.Click.performed += OnClick;
@@ -49,7 +39,11 @@ public class GameInput : MonoBehaviour
 
     public bool PeekClickPosition(out Vector2 position)
     {
-        if (hasClickTarget) { position = clickPosition; return true; }
+        if (hasClickTarget)
+        {
+            position = clickPosition;
+            return true;
+        }
         position = Vector2.zero;
         return false;
     }
@@ -77,5 +71,14 @@ public class GameInput : MonoBehaviour
         }
         position = Vector2.zero;
         return false;
+    }
+
+    private void OnDisable()
+    {
+        if (playerInputActions != null)
+        {
+            playerInputActions.Player.Disable();
+            playerInputActions.Disable();
+        }
     }
 }

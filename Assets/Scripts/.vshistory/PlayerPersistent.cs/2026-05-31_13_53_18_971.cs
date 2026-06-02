@@ -22,37 +22,25 @@ public class PlayerPersistent : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded; // добавили
     }
 
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded; // добавили
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         bool shouldHide = System.Array.IndexOf(hiddenInScenes, scene.name) >= 0;
-        if (shouldHide)
-            SetPlayerActive(false);
-    }
-
-    void OnSceneUnloaded(Scene scene) // новый метод
-    {
-        bool wasFightScene = System.Array.IndexOf(hiddenInScenes, scene.name) >= 0;
-        if (wasFightScene)
-            SetPlayerActive(true);
+        SetPlayerActive(!shouldHide);
     }
 
     void SetPlayerActive(bool active)
     {
         foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
             sr.enabled = active;
-
-        // только коллайдер самого игрока, не детей
-        var col = GetComponent<Collider2D>();
-        if (col != null) col.enabled = active;
+        foreach (var col in GetComponentsInChildren<Collider2D>())
+            col.enabled = active;
 
         var rb = GetComponent<Rigidbody2D>();
         if (rb != null)

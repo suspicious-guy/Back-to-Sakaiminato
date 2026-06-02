@@ -1,18 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Attack : MonoBehaviour
+public class TrialAttack : MonoBehaviour
 {
     [Header("Движение")]
-    public float speed = 200f;
+    public float speed = 200000f;
+
     [Header("Урон")]
     public float damage = 10f;
+
     private RectTransform rectTransform;
     private float bottomBoundary;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+
         bottomBoundary = 90;
     }
 
@@ -23,7 +26,9 @@ public class Attack : MonoBehaviour
         rectTransform.position = newPosition;
 
         if (rectTransform.position.y < bottomBoundary)
+        {
             Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -32,20 +37,10 @@ public class Attack : MonoBehaviour
         {
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
+            {
                 playerHealth.TakeDamage(damage);
-
-            CloseFightScene();
+            }
             Destroy(gameObject);
         }
-    }
-
-    void CloseFightScene()
-    {
-        string sceneName = FightSceneManager.CurrentFightScene;
-        if (string.IsNullOrEmpty(sceneName)) return;
-
-        Scene fightScene = SceneManager.GetSceneByName(sceneName);
-        if (fightScene.isLoaded)
-            SceneManager.UnloadSceneAsync(fightScene);
     }
 }

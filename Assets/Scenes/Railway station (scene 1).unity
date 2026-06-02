@@ -211,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 762739052}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &572732616
 GameObject:
@@ -5502,7 +5502,6 @@ RectTransform:
   - {fileID: 888504904}
   - {fileID: 1667106242}
   - {fileID: 1617628854}
-  - {fileID: 530589068}
   - {fileID: 865601303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30469,10 +30468,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.86781883, y: 0.7107272}
-      - {x: -2.1907969, y: -0.5174763}
-      - {x: -2.457725, y: -1.3565692}
-      - {x: 0.04023516, y: -0.36477733}
-      - {x: 0.84774494, y: 0.8462381}
+      - {x: -1.4680281, y: -0.9890988}
+      - {x: 1.0675282, y: -2.2937546}
+      - {x: 1.3090378, y: -0.60267806}
+      - {x: 1.2681408, y: 1.0121374}
+      - {x: 0.84053516, y: 0.983211}
   m_UseDelaunayMesh: 1
 --- !u!4 &1181188753
 Transform:
@@ -30657,6 +30657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPersistent
   hiddenInScenes:
   - FightingShirime
+  - Puzzle
+  - TrialFighting
 --- !u!61 &1276067598
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51016,3 +51018,4 @@ SceneRoots:
   - {fileID: 1181188753}
   - {fileID: 2011719345}
   - {fileID: 1276067602}
+  - {fileID: 530589068}

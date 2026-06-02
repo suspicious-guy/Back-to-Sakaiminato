@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class Attack : MonoBehaviour
 {
     [Header("Движение")]
@@ -9,43 +8,33 @@ public class Attack : MonoBehaviour
     public float damage = 10f;
     private RectTransform rectTransform;
     private float bottomBoundary;
-
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         bottomBoundary = 90;
     }
-
     void Update()
     {
         Vector3 newPosition = rectTransform.position;
         newPosition.y -= speed * Time.deltaTime;
         rectTransform.position = newPosition;
-
         if (rectTransform.position.y < bottomBoundary)
+        {
             Destroy(gameObject);
+        }
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
+            {
                 playerHealth.TakeDamage(damage);
-
-            CloseFightScene();
+            }
+            Scene sceneToUnload = gameObject.scene;
             Destroy(gameObject);
+            SceneManager.UnloadSceneAsync(sceneToUnload);
         }
-    }
-
-    void CloseFightScene()
-    {
-        string sceneName = FightSceneManager.CurrentFightScene;
-        if (string.IsNullOrEmpty(sceneName)) return;
-
-        Scene fightScene = SceneManager.GetSceneByName(sceneName);
-        if (fightScene.isLoaded)
-            SceneManager.UnloadSceneAsync(fightScene);
     }
 }

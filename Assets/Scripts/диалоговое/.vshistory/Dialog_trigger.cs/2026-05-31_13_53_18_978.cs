@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
 
 public class DialogueGiver : MonoBehaviour
 {
     public DialogControler.DialogueLine[] dialogue;
     public bool giveSecondSight = true;
     public bool oneTimeOnly = true;
-    public string fightSceneName = "TrialFighting";
 
     private bool used = false;
     private bool playerInRange = false;
@@ -30,11 +27,6 @@ public class DialogueGiver : MonoBehaviour
         if (playerInRange && !used && Keyboard.current.fKey.wasPressedThisFrame)
         {
             StartDialogue();
-        }
-        //эт янчик добавил для пробной боевки
-        else if (playerInRange  && used && Keyboard.current.qKey.wasPressedThisFrame)
-        {
-            StartFight();
         }
     }
 
@@ -74,12 +66,5 @@ public class DialogueGiver : MonoBehaviour
 
         if (dialogController != null)
             dialogController.OnDialogueEnd -= GiveReward;
-    }
-    //и это
-    void StartFight()
-    {
-        FightSceneManager.CurrentFightScene = fightSceneName;
-        SceneManager.LoadScene(fightSceneName, LoadSceneMode.Additive);
-        Debug.Log($"[TreeCreature] Запуск файтинга: {fightSceneName}");
     }
 }

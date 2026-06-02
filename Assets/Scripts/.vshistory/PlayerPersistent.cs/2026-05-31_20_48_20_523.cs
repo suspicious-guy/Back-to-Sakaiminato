@@ -49,10 +49,8 @@ public class PlayerPersistent : MonoBehaviour
     {
         foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
             sr.enabled = active;
-
-        // только коллайдер самого игрока, не детей
-        var col = GetComponent<Collider2D>();
-        if (col != null) col.enabled = active;
+        foreach (var col in GetComponentsInChildren<Collider2D>())
+            col.enabled = active;
 
         var rb = GetComponent<Rigidbody2D>();
         if (rb != null)

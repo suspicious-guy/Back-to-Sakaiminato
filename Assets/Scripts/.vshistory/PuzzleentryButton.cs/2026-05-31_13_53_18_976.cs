@@ -40,6 +40,7 @@ public class PuzzleEntryButton : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Update работает");
         transform.localScale = Vector3.Lerp(
             transform.localScale,
             targetScale,

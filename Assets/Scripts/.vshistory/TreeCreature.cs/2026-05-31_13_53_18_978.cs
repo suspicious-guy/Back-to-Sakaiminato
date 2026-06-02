@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+// добавлено Полиной чтобы загрузка файтинга работала
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -41,16 +42,6 @@ public class TreeCreature : MonoBehaviour
     public UnityEngine.UI.Text hintText;
     public string completionMessage = "Путь открыт!";
 
-    [Header("Сохранение прогресса")]
-    [Tooltip("Уникальный ключ для сохранения — задай разный для каждого существа, например TreeCreature_Forest")]
-    public string saveKey = "TreeCreature_Default";
-
-    [Header("Файтинг")]
-    [Tooltip("На каком шаге (считая с 1) запускать файтинг. 0 = не запускать")]
-    public int fightAtStep = 0;
-    [Tooltip("Имя сцены файтинга")]
-    public string fightSceneName = "FightingShirime";
-
     private SpriteRenderer sr;
     private Collider2D col;
     private Vector3 baseScale;
@@ -71,20 +62,6 @@ public class TreeCreature : MonoBehaviour
 
         col.enabled = false;
         sr.color = Color.clear;
-
-        // Если уже пройдено — сразу убираем все барьеры и выходим
-        if (SaveManager.IsCompleted(saveKey))
-        {
-            isFinished = true;
-            foreach (var step in steps)
-            {
-                if (step.barrier != null)
-                    Destroy(step.barrier);
-            }
-            if (hintText != null) hintText.text = "";
-            Debug.Log($"[TreeCreature] '{saveKey}' уже пройден, барьеры убраны");
-            return;
-        }
 
         UpdateHint();
         StartCoroutine(SequenceRoutine());
@@ -148,6 +125,8 @@ public class TreeCreature : MonoBehaviour
             transform.localScale = baseScale;
             col.enabled = false;
         }
+        else
+        {}
     }
 
     IEnumerator SequenceRoutine()
@@ -174,12 +153,10 @@ public class TreeCreature : MonoBehaviour
 
             if (isClicked)
             {
-                // Запуск файтинга на нужном шаге
-                if (fightAtStep > 0 && currentStep + 1 == fightAtStep)
+                // Проверка для загрузки файтинга, добавлено Полиной             
+                if (currentStep + 1 == 5)
                 {
-                    FightSceneManager.CurrentFightScene = fightSceneName;
-                    SceneManager.LoadScene(fightSceneName, LoadSceneMode.Additive);
-                    Debug.Log($"[TreeCreature] Запуск файтинга: {fightSceneName}");
+                    SceneManager.LoadScene("FightingShirime", LoadSceneMode.Additive);
                 }
 
                 Debug.Log($"[TreeCreature] Клик на шаге {currentStep + 1}, снимаем барьер");
@@ -191,8 +168,7 @@ public class TreeCreature : MonoBehaviour
                 if (currentStep >= steps.Length)
                 {
                     isFinished = true;
-                    SaveManager.SetCompleted(saveKey); // сохраняем прогресс
-                    Debug.Log($"[TreeCreature] Все шаги пройдены! Сохранено: {saveKey}");
+                    Debug.Log("[TreeCreature] Все шаги пройдены!");
                     if (hintText != null) hintText.text = completionMessage;
                     StartCoroutine(HideHint(3f));
                     yield break;

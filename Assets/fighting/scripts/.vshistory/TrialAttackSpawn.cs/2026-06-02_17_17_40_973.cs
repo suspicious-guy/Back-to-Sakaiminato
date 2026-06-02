@@ -6,7 +6,7 @@ public class TrialAttackSpawn : MonoBehaviour
     public GameObject attackPrefab;
 
     [Header("Интервал между атаками")]
-    public float interval = 5f;
+    public float interval = 9f;
 
     [Header("Позиция спавна")]
     public Vector3 spawnPosition = new Vector3(0, 500, 0);

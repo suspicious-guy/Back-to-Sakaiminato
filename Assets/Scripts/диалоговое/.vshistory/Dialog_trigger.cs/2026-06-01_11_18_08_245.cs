@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
 
 public class DialogueGiver : MonoBehaviour
 {
     public DialogControler.DialogueLine[] dialogue;
     public bool giveSecondSight = true;
     public bool oneTimeOnly = true;
-    public string fightSceneName = "TrialFighting";
+    public string fightSceneName = "FightingShirime";
 
     private bool used = false;
     private bool playerInRange = false;

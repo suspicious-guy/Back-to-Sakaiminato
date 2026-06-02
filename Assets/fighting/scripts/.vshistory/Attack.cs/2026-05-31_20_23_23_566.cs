@@ -41,10 +41,7 @@ public class Attack : MonoBehaviour
 
     void CloseFightScene()
     {
-        string sceneName = FightSceneManager.CurrentFightScene;
-        if (string.IsNullOrEmpty(sceneName)) return;
-
-        Scene fightScene = SceneManager.GetSceneByName(sceneName);
+        Scene fightScene = SceneManager.GetSceneByName("FightingShirime");
         if (fightScene.isLoaded)
             SceneManager.UnloadSceneAsync(fightScene);
     }
