@@ -12,10 +12,13 @@ public class DialogControler : MonoBehaviour
     public Image playerPortrait;
     public Image npcPortrait;
     public TextMeshProUGUI dialogText;
-    public TextMeshProUGUI speakerNameText;  
+    public TextMeshProUGUI speakerNameText;
 
     [Header("Настройки")]
     public float textSpeed = 0.05f;
+
+    [Header("Блокировка игрока")]
+    public Player playerController;  // ← добавить (перетащи игрока)
 
     public event Action OnDialogueEnd;
 
@@ -28,7 +31,7 @@ public class DialogControler : MonoBehaviour
     public class DialogueLine
     {
         public string speaker;
-        public string speakerName;  
+        public string speakerName;
         public string text;
     }
 
@@ -45,6 +48,12 @@ public class DialogControler : MonoBehaviour
 
         if (speakerNameText != null)
             speakerNameText.gameObject.SetActive(false);
+
+        // Автоматически ищем игрока, если не назначен
+        if (playerController == null)
+        {
+            playerController = FindObjectOfType<Player>();
+        }
     }
 
     void Update()
@@ -71,6 +80,13 @@ public class DialogControler : MonoBehaviour
         currentDialogue = dialogue;
         currentLineIndex = 0;
         isDialogueActive = true;
+
+        // БЛОКИРУЕМ ДВИЖЕНИЕ ИГРОКА
+        if (playerController != null)
+        {
+            playerController.SetMovementEnabled(false);
+            Debug.Log("🔒 Движение игрока заблокировано");
+        }
 
         if (dialogPanel != null)
             dialogPanel.SetActive(true);
@@ -105,7 +121,6 @@ public class DialogControler : MonoBehaviour
 
         DialogueLine line = currentDialogue[currentLineIndex];
 
-        // Показываем имя говорящего
         if (speakerNameText != null && !string.IsNullOrEmpty(line.speakerName))
         {
             speakerNameText.text = line.speakerName;
@@ -161,6 +176,13 @@ public class DialogControler : MonoBehaviour
     void CloseDialogue()
     {
         isDialogueActive = false;
+
+        // РАЗБЛОКИРУЕМ ДВИЖЕНИЕ ИГРОКА
+        if (playerController != null)
+        {
+            playerController.SetMovementEnabled(true);
+            Debug.Log("🔓 Движение игрока разблокировано");
+        }
 
         if (dialogPanel != null)
             dialogPanel.SetActive(false);

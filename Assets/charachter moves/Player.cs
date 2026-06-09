@@ -12,15 +12,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float waypointReachDistance = 0.08f;
 
     private Rigidbody2D rb;
-
     private float currentSpeed;
     private bool isRunning;
+    private bool movementEnabled = true;  // ← добавить
 
     private List<Vector2> path;
     private int pathIndex;
     private bool hasPath;
 
-    private Vector2 wasdInput;
+    private Vector2 wasdInput;  // ← должно быть
 
     private void Awake()
     {
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
         HandleRunToggle();
         HandleWASD();
         HandleClick();
-        // НЕ НУЖНО вызывать SecondSight здесь — он сам работает
     }
 
     private void FixedUpdate()
@@ -42,6 +41,20 @@ public class Player : MonoBehaviour
             MoveAlongPath();
         else
             MoveByWASD();
+    }
+
+    // БЛОКИРОВКА ДВИЖЕНИЯ
+    public void SetMovementEnabled(bool enabled)
+    {
+        movementEnabled = enabled;
+
+        if (!movementEnabled)
+        {
+            CancelPath();
+            wasdInput = Vector2.zero;
+            if (rb != null)
+                rb.linearVelocity = Vector2.zero;
+        }
     }
 
     private void HandleRunToggle()
@@ -56,6 +69,12 @@ public class Player : MonoBehaviour
 
     private void HandleWASD()
     {
+        if (!movementEnabled)
+        {
+            wasdInput = Vector2.zero;
+            return;
+        }
+
         wasdInput = GameInput.Instance.GetMovementVector();
 
         if (wasdInput != Vector2.zero)
@@ -64,6 +83,8 @@ public class Player : MonoBehaviour
 
     private void HandleClick()
     {
+        if (!movementEnabled) return;
+
         if (!GameInput.Instance.TryGetClickPosition(out Vector2 clickPos)) return;
 
         List<Vector2> newPath = PathfindingGrid.Instance.FindPath(rb.position, clickPos);
@@ -104,7 +125,7 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + direction * (currentSpeed * Time.fixedDeltaTime));
     }
 
-    private void CancelPath()
+    private void CancelPath()  // ← метод должен быть
     {
         hasPath = false;
         path = null;
@@ -112,6 +133,8 @@ public class Player : MonoBehaviour
 
     private void MoveByWASD()
     {
+        if (!movementEnabled) return;
+
         Vector2 dir = wasdInput.normalized;
         if (dir == Vector2.zero)
         {
