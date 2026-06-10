@@ -261,8 +261,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5262908291461496031, guid: 2dcdecd37f1d56e4cab6c511810737d2, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 066209b73417c5947ad6afd8c307a6b9, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -29265,6 +29265,7 @@ MonoBehaviour:
   walkSpeed: 2.21
   runSpeed: 4.5
   waypointReachDistance: 0.08
+  smoothMovement: 47
 --- !u!50 &1276067600
 Rigidbody2D:
   serializedVersion: 5

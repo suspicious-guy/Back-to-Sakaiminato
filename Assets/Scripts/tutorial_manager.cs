@@ -1,45 +1,50 @@
-using System.Collections;
+п»їusing System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TutorialManager : MonoBehaviour
 {
-    [Header("Обучающие вставки")]
+    [Header("РћР±СѓС‡Р°СЋС‰РёРµ РІСЃС‚Р°РІРєРё")]
     public GameObject[] tutorialScreens;
 
-    [Header("Настройки")]
+    [Header("РќР°СЃС‚СЂРѕР№РєРё")]
     public bool showOnce = true;
+    public bool startOnGameStart = false;  // в†ђ Р·Р°РїСѓСЃРєР°С‚СЊ РІ РЅР°С‡Р°Р»Рµ РёРіСЂС‹?
 
     private int currentIndex = 0;
     private bool isActive = false;
-    private static bool hasBeenShown = false;
+    private static bool hasBeenShown = false;  // РґР»СЏ РѕР±СѓС‡РµРЅРёСЏ РІ РЅР°С‡Р°Р»Рµ
+    private static bool hasBeenShownSecond = false;  // РґР»СЏ РѕР±СѓС‡РµРЅРёСЏ РїРѕСЃР»Рµ РґРёР°Р»РѕРіР°
     private Player playerController;
 
     void Start()
     {
         playerController = FindObjectOfType<Player>();
 
-        // НЕ ЗАПУСКАЕМ АВТОМАТИЧЕСКИ!
-        // Обучение будет запущено по вызову из диалога
+        // Р—Р°РїСѓСЃРєР°РµРј РѕР±СѓС‡РµРЅРёРµ РІ РЅР°С‡Р°Р»Рµ РёРіСЂС‹
+        if (startOnGameStart && !hasBeenShown)
+        {
+            StartTutorial();
+        }
     }
 
-    // Публичный метод для запуска обучения из диалога
     public void StartTutorial()
     {
-        if (showOnce && hasBeenShown) return;
+        // РџСЂРѕРІРµСЂСЏРµРј, РєР°РєРѕРµ РѕР±СѓС‡РµРЅРёРµ Р·Р°РїСѓСЃРєР°РµРј
+        if (startOnGameStart && hasBeenShown) return;
+        if (!startOnGameStart && hasBeenShownSecond) return;
 
-        // Блокируем игрока
+        Debug.Log($"рџ“– Р—Р°РїСѓСЃРє РѕР±СѓС‡РµРЅРёСЏ: {(startOnGameStart ? "РЅР°С‡Р°Р»Рѕ РёРіСЂС‹" : "РїРѕСЃР»Рµ РґРёР°Р»РѕРіР°")}");
+
         if (playerController != null)
             playerController.SetMovementEnabled(false);
 
-        // Скрываем все экраны
         foreach (var screen in tutorialScreens)
         {
             if (screen != null)
                 screen.SetActive(false);
         }
 
-        // Показываем первый экран
         if (tutorialScreens.Length > 0 && tutorialScreens[0] != null)
         {
             tutorialScreens[0].SetActive(true);
@@ -80,13 +85,17 @@ public class TutorialManager : MonoBehaviour
     void EndTutorial()
     {
         isActive = false;
-        hasBeenShown = true;
         Time.timeScale = 1f;
 
         if (playerController != null)
             playerController.SetMovementEnabled(true);
 
-        // Удаляем объекты обучения
+        // Р—Р°РїРѕРјРёРЅР°РµРј, РєР°РєРѕРµ РѕР±СѓС‡РµРЅРёРµ РїСЂРѕС€Р»Рё
+        if (startOnGameStart)
+            hasBeenShown = true;
+        else
+            hasBeenShownSecond = true;
+
         foreach (var screen in tutorialScreens)
         {
             if (screen != null) Destroy(screen);
