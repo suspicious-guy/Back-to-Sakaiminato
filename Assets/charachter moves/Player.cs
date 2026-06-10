@@ -10,17 +10,19 @@ public class Player : MonoBehaviour
 
     [Header("Навигация")]
     [SerializeField] private float waypointReachDistance = 0.08f;
+    [SerializeField] private float smoothMovement = 15f;  // для WASD
 
     private Rigidbody2D rb;
+
     private float currentSpeed;
     private bool isRunning;
-    private bool movementEnabled = true;  // ← добавить
+    private bool movementEnabled = true;
 
     private List<Vector2> path;
     private int pathIndex;
     private bool hasPath;
 
-    private Vector2 wasdInput;  // ← должно быть
+    private Vector2 wasdInput;
 
     private void Awake()
     {
@@ -38,12 +40,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (hasPath)
-            MoveAlongPath();
+            MoveAlongPath();      // обычное движение для кликов
         else
-            MoveByWASD();
+            MoveByWASDLerp();     // Lerp только для WASD
     }
 
-    // БЛОКИРОВКА ДВИЖЕНИЯ
     public void SetMovementEnabled(bool enabled)
     {
         movementEnabled = enabled;
@@ -101,9 +102,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Обычное движение по пути (без Lerp)
     private void MoveAlongPath()
     {
-        if (pathIndex >= path.Count) { CancelPath(); return; }
+        if (pathIndex >= path.Count)
+        {
+            CancelPath();
+            return;
+        }
 
         Vector2 target = path[pathIndex];
         Vector2 direction = (target - rb.position).normalized;
@@ -125,13 +131,14 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + direction * (currentSpeed * Time.fixedDeltaTime));
     }
 
-    private void CancelPath()  // ← метод должен быть
+    private void CancelPath()
     {
         hasPath = false;
         path = null;
     }
 
-    private void MoveByWASD()
+    // Lerp только для WASD
+    private void MoveByWASDLerp()
     {
         if (!movementEnabled) return;
 
@@ -142,9 +149,9 @@ public class Player : MonoBehaviour
             return;
         }
 
-        Vector2 newPos = rb.position + dir * (currentSpeed * Time.fixedDeltaTime);
+        Vector2 targetPos = rb.position + dir * (currentSpeed * Time.fixedDeltaTime);
 
-        if (PathfindingGrid.Instance != null && !PathfindingGrid.Instance.IsWalkable(newPos))
+        if (PathfindingGrid.Instance != null && !PathfindingGrid.Instance.IsWalkable(targetPos))
         {
             Vector2 posX = rb.position + new Vector2(dir.x, 0f) * (currentSpeed * Time.fixedDeltaTime);
             if (dir.x != 0f && PathfindingGrid.Instance.IsWalkable(posX))
@@ -164,6 +171,9 @@ public class Player : MonoBehaviour
             return;
         }
 
-        rb.MovePosition(newPos);
+        // Lerp движение для плавности WASD
+        float step = smoothMovement * Time.fixedDeltaTime;
+        Vector2 newPosition = Vector2.Lerp(rb.position, targetPos, Mathf.Min(step, 1f));
+        rb.MovePosition(newPosition);
     }
 }
