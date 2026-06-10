@@ -5,37 +5,29 @@ using UnityEngine.InputSystem;
 public class TutorialManager : MonoBehaviour
 {
     [Header("Обучающие вставки")]
-    public GameObject[] tutorialScreens;  // Массив панелей с картинками
+    public GameObject[] tutorialScreens;
 
     [Header("Настройки")]
-    public bool showOnce = true;  // Показывать только один раз
+    public bool showOnce = true;
 
     private int currentIndex = 0;
     private bool isActive = false;
-    private static bool hasBeenShown = false;  // Запоминает, показывали ли обучение
+    private static bool hasBeenShown = false;
     private Player playerController;
 
     void Start()
     {
         playerController = FindObjectOfType<Player>();
 
-        // Проверяем, нужно ли показывать обучение
-        if (showOnce && hasBeenShown)
-        {
-            // Удаляем объекты обучения, если они не нужны
-            foreach (var screen in tutorialScreens)
-            {
-                if (screen != null) Destroy(screen);
-            }
-            Destroy(gameObject);
-            return;
-        }
-
-        StartTutorial();
+        // НЕ ЗАПУСКАЕМ АВТОМАТИЧЕСКИ!
+        // Обучение будет запущено по вызову из диалога
     }
 
-    void StartTutorial()
+    // Публичный метод для запуска обучения из диалога
+    public void StartTutorial()
     {
+        if (showOnce && hasBeenShown) return;
+
         // Блокируем игрока
         if (playerController != null)
             playerController.SetMovementEnabled(false);
@@ -53,7 +45,7 @@ public class TutorialManager : MonoBehaviour
             tutorialScreens[0].SetActive(true);
             isActive = true;
             currentIndex = 0;
-            Time.timeScale = 0f;  // Останавливаем игру
+            Time.timeScale = 0f;
         }
     }
 
@@ -61,7 +53,6 @@ public class TutorialManager : MonoBehaviour
     {
         if (!isActive) return;
 
-        // Нажатие пробела для переключения
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             NextScreen();
@@ -70,13 +61,11 @@ public class TutorialManager : MonoBehaviour
 
     void NextScreen()
     {
-        // Скрываем текущий экран
         if (tutorialScreens[currentIndex] != null)
             tutorialScreens[currentIndex].SetActive(false);
 
         currentIndex++;
 
-        // Проверяем, есть ли следующий экран
         if (currentIndex < tutorialScreens.Length)
         {
             if (tutorialScreens[currentIndex] != null)
@@ -92,13 +81,12 @@ public class TutorialManager : MonoBehaviour
     {
         isActive = false;
         hasBeenShown = true;
-        Time.timeScale = 1f;  // Возвращаем игру
+        Time.timeScale = 1f;
 
-        // Разблокируем игрока
         if (playerController != null)
             playerController.SetMovementEnabled(true);
 
-        // Удаляем объекты обучения, чтобы не мешали
+        // Удаляем объекты обучения
         foreach (var screen in tutorialScreens)
         {
             if (screen != null) Destroy(screen);
