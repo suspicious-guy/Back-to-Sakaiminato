@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrialAttackSpawn
   attackPrefab: {fileID: 4723576277068825183, guid: 89de335509b46f148baaa49cce310d90, type: 3}
-  interval: 5
+  interval: 2
   spawnPosition: {x: 0, y: 79, z: 0}
 --- !u!114 &963063643
 MonoBehaviour:

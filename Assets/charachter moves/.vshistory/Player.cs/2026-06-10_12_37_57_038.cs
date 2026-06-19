@@ -24,10 +24,6 @@ public class Player : MonoBehaviour
 
     private Vector2 wasdInput;
 
-    void Start()
-    {
-        transform.position = new Vector3(1.16f, -0.04f, 0);
-    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

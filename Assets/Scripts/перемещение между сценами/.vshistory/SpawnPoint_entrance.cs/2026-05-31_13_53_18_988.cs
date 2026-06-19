@@ -8,10 +8,6 @@ public class SpawnPoint : MonoBehaviour
     public string targetLayer = "Player";
     public int orderInLayer = 0;
 
-    [Header("Использовать как стартовую точку")]
-    [Tooltip("Если true - игрок появится здесь при загрузке сцены")]
-    public bool isDefaultSpawn = false;
-
     void Start()
     {
         StartCoroutine(TeleportPlayer());
@@ -21,11 +17,7 @@ public class SpawnPoint : MonoBehaviour
     {
         yield return null;
 
-        // Проверяем: либо это телепорт, либо стартовая точка
-        bool isTeleport = PlayerPrefs.GetString("SpawnPoint") == pointId;
-        bool isDefault = isDefaultSpawn && PlayerPrefs.GetString("SpawnPoint") == "";
-
-        if (isTeleport || isDefault)
+        if (PlayerPrefs.GetString("SpawnPoint") == pointId)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)

@@ -844,11 +844,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.24017143, y: 2.1135166}
-      - {x: -1.6042738, y: 0.7255709}
-      - {x: -0.26028007, y: -2.2063708}
-      - {x: 0.303949, y: -1.3111908}
-      - {x: 0.40521622, y: 1.8155386}
+    - - {x: 0.05139351, y: 1.5480521}
+      - {x: -0.80025387, y: 1.2026815}
+      - {x: -0.10124534, y: -1.587894}
+      - {x: 0.9754387, y: -1.0284586}
+      - {x: 0.9441757, y: 1.9569046}
   m_UseDelaunayMesh: 1
 --- !u!114 &215602639
 MonoBehaviour:
@@ -5775,6 +5775,7 @@ MonoBehaviour:
   pointId: entrance 2
   targetLayer: Player
   orderInLayer: 1
+  isDefaultSpawn: 0
 --- !u!4 &1177986118
 Transform:
   m_ObjectHideFlags: 0
@@ -5784,7 +5785,7 @@ Transform:
   m_GameObject: {fileID: 1177986116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.1, y: 1.08, z: 0}
+  m_LocalPosition: {x: 32.82, y: 1.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23118,7 +23119,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -23567,6 +23568,7 @@ MonoBehaviour:
   pointId: entrance
   targetLayer: Player
   orderInLayer: 1
+  isDefaultSpawn: 0
 --- !u!4 &1965275533
 Transform:
   m_ObjectHideFlags: 0

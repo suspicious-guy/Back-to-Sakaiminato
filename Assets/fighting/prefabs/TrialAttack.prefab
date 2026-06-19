@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e61f2ebe8c9aa64fa3402a8546ca670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrialAttack
-  speed: 15
+  speed: 50
   damage: 15

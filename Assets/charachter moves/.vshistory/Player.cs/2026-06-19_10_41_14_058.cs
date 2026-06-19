@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(1.16f, -0.04f, 0);
+        transform.position = new Vector3(1.16, -0.04, 0);
     }
     private void Awake()
     {
