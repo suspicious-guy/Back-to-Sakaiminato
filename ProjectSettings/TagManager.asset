@@ -2,19 +2,19 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - dialog trigger
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - player
+  - Obstacle
+  - enemy
+  - super hide grass
   - 
   - 
   - 
@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: trees behind
+    uniqueID: 2263382827
+    locked: 0
+  - name: "\u0441\u0446\u0435\u043D\u0430 1"
+    uniqueID: 1827459687
+    locked: 0
+  - name: Player
+    uniqueID: 982761705
+    locked: 0
+  - name: trees
+    uniqueID: 1648860187
+    locked: 0
+  - name: grid
+    uniqueID: 2725735177
+    locked: 0
+  - name: village
+    uniqueID: 3145496723
+    locked: 0
+  - name: dialog
+    uniqueID: 1897050667
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []
