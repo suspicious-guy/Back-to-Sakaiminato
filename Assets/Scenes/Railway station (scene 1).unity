@@ -219,10 +219,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   tutorialScreens:
+  - {fileID: 351381988}
   - {fileID: 1262103578}
   - {fileID: 1012414959}
-  - {fileID: 351381988}
   showOnce: 1
+  startOnGameStart: 1
 --- !u!1 &351381988
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +297,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 550, y: 260}
+  m_SizeDelta: {x: 550, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &530589066
 GameObject:
